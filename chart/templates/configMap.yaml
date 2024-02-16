@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-conf
+data:
+  default.conf.template: |
+    server {
+      listen 80;
+      location / {
+        add_header Content-Type text/html;
+
+        return 200 '<html><body><font size="16"><b>
+
+        Pod: $POD_NAME<br>
+        Node: $NODE_NAME<br>
+        Namespace: $NAMESPACE_NAME<br>
+        IP: $POD_IP<br>
+
+        </b></font></body></html>';
+      }
+    }

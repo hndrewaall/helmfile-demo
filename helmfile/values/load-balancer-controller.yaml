@@ -1,0 +1,4 @@
+serviceAccount:
+  name: load-balancer-controller
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::241532693788:role/load-balancer-controller

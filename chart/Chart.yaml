@@ -1,0 +1,11 @@
+apiVersion: v2
+name: helmfile-demo
+description: This is a simple demo application built with nginx. It demonstrates basic multi-node load balancing for web traffic.
+type: application
+version: 1.0.0
+appVersion: 1.0.0
+sources:
+  - https://github.com/hndrewaall/helmfile-demo
+maintainers:
+  - name: Andrew Hall
+    email: hndrewaall@gmail.com

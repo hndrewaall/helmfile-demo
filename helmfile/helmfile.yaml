@@ -1,0 +1,35 @@
+helmDefaults:
+  wait: true
+  deleteWait: true
+  atomic: true
+
+repositories:
+- name: eks
+  url: https://aws.github.io/eks-charts/
+- name: external-dns
+  url: https://kubernetes-sigs.github.io/external-dns/
+
+releases:
+- name: load-balancer-controller
+  namespace: kube-system
+  chart: eks/aws-load-balancer-controller
+  version: 1.7.1
+  values:
+  - ./values/load-balancer-controller.yaml
+  set:
+  - name: clusterName
+    value: helmfile-demo-cluster
+- name: external-dns
+  namespace: kube-system
+  chart: external-dns/external-dns
+  version: 1.14.3
+  values:
+  - ./values/external-dns.yaml
+  - domainFilters:
+    - {{ env "HELMFILE_DEMO_DOMAIN" | default "andrewhall.work" }}
+- name: helmfile-demo
+  namespace: helmfile-demo
+  chart: ../chart
+  values:
+  - domain: {{ env "HELMFILE_DEMO_DOMAIN" | default "andrewhall.work" }}
+
