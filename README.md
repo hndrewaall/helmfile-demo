@@ -30,6 +30,9 @@ All deployed infrastructure (both Helm and Terraform) can be deleted by using `m
 
 ## Outstanding Issues
 
+### Hardcoded AWS account ID
+The AWS account ID is hardcoded in two of the Helm values files. These need to be updated for use with other accounts. However, it should be trivial to add an override via environmental variable comparable to what is already in place for domain name.
+
 ### Autoscaling
 The cluster deployed does not include either horizontal pod autoscaling or cluster node scaling. Both would be needed to effectively scale the application to production workloads.
 
