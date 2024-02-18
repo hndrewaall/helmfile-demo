@@ -54,7 +54,7 @@ The `nginx` configuration used by the demo app is stored on a Kubernetes `Config
 ## Tips
 
 ### Plugin caching
-As configured, the Makefile will remove the local Terraform cache when cleaning up. To prevent time-consuming module downloads, [configure a local TF module cache](https://developer.hashicorp.com/terraform/cli/config/config-file#provider-plugin-cache).
+As configured, the Makefile will remove the local Terraform cache when cleaning up. To prevent time-consuming module downloads, [configure a local TF provider cache](https://developer.hashicorp.com/terraform/cli/config/config-file#provider-plugin-cache).
 
 ### DNS TTL
 When creating new DNS records, you can reduce iteration time by reducing the TTL of your `SOA` record to 60 seconds.
